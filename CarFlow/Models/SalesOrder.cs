@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,13 +19,20 @@ namespace CarFlow.Models
     public class SalesOrder
     {
         public int ID { get; set; }
+
+        [Display(Name = "Product Name")]
         public string ProductName { get; set; }
+
+        [Display(Name = "Sale price"), DataType(DataType.Currency)]        
         public decimal SalePrice { get; set; }
+
+        [Display(Name = "Sale date"), DataType(DataType.Date)]        
         public DateTime SaleDate { get; set; }
 
         // References to other tables
         public int SalesAdvisorId { get; set; }
         [ForeignKey("SalesAdvisorId")]
+        [Display(Name = "Sales Advisor")]
         public SalesAdvisor SalesAdvisor { get; set; }
 
         public int CustomerId { get; set; }

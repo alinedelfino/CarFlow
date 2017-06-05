@@ -48,8 +48,8 @@ namespace CarFlow.Controllers
         // GET: SalesOrders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "ID", "ID");
-            ViewData["SalesAdvisorId"] = new SelectList(_context.SalesAdvisor, "ID", "ID");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "ID", "Name");
+            ViewData["SalesAdvisorId"] = new SelectList(_context.SalesAdvisor, "ID", "Name");
             return View();
         }
 
@@ -84,8 +84,8 @@ namespace CarFlow.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "ID", "ID", salesOrder.CustomerId);
-            ViewData["SalesAdvisorId"] = new SelectList(_context.SalesAdvisor, "ID", "ID", salesOrder.SalesAdvisorId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "ID", "Name", salesOrder.CustomerId);
+            ViewData["SalesAdvisorId"] = new SelectList(_context.SalesAdvisor, "ID", "Name", salesOrder.SalesAdvisorId);
             return View(salesOrder);
         }
 
