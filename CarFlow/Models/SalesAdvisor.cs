@@ -21,5 +21,8 @@ namespace CarFlow.Models
         public string Telephone { get; set; }
         public DateTime BirthDay { get; set; }
         public decimal Sallary { get; set; }
+
+        // One salesman can have many sales
+        public List<SalesOrder> SalesOrders { get; set; }
     }
 }

@@ -1,0 +1,65 @@
+@model CarFlow.Models.Survey
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="ID" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Easy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Easy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Friendly)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Friendly)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnoughInfo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnoughInfo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Recomend)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Recomend)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Suggestion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suggestion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesOrder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SalesOrder.ID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

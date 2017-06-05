@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,10 +20,29 @@ namespace CarFlow.Models
     {
         public int ID { get; set; }
         public int Rate { get; set; }
+        [Required]
+        [Display(Name = "Process was easy")]
         public bool Easy { get; set; }
+
+        [Required]
+        [Display(Name = "Friendly enviroment")]
         public bool Friendly { get; set; }
+
+        [Required]
+        [Display(Name = "Enough information")]
         public bool EnoughInfo { get; set; }
+
+        [Required]
+        [Display(Name = "Would you recomend")]
         public bool Recomend { get; set; }
+
+        [Required]
+        [Display(Name = "Any other suggestion")]
         public string Suggestion { get; set; }
+
+        // Each survey relates to a sale order
+        public int SalesOrderId { get; set; }
+        [ForeignKey("SalesOrderId")]
+        public SalesOrder SalesOrder { get; set; }
     }
 }
