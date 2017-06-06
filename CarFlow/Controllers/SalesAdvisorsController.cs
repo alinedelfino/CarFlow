@@ -35,27 +35,35 @@ namespace CarFlow.Controllers
 
                 // Now get all the sales orders from this particular saleAdvisor
                 //var salesAdvisorID = salesAdvisor.ElementAt(0).ID;
-                var salesAdvisorID = salesAdvisor.First().ID;
-                salesOrder = salesOrder.Where(x => x.SalesAdvisorId == salesAdvisorID);
+                if (salesAdvisor.Any())
+                {
+                    var salesAdvisorID = salesAdvisor.First().ID;
+                    salesOrder = salesOrder.Where(x => x.SalesAdvisorId == salesAdvisorID);
 
-                // Get number of sales
-                numSales = salesOrder.Count();
+                    // Get number of sales
+                    numSales = salesOrder.Count();
 
-                // If there was any sail get the average rating
-                if (salesOrder.Any()) {              
-                    var sales = salesOrder.ToList();
-
-                    // Probably not the best LINQ way...              
-                    foreach (var element in sales)
+                    // If there was any sail get the average rating
+                    if (salesOrder.Any())
                     {
-                        var survey = from m in _context.Survey
-                                     select m;
-                        survey = survey.Where(x => x.SalesOrderId == element.ID);
-                        ratingAverage += survey.First().Rate;
-                    }
-                    ratingAverage /= sales.Count();                                        
-                }                
+                        var sales = salesOrder.ToList();
 
+                        // Probably not the best LINQ way...              
+                        foreach (var element in sales)
+                        {
+                            var survey = from m in _context.Survey
+                                         select m;
+                            survey = survey.Where(x => x.SalesOrderId == element.ID);
+                            // Check if there was any survey before continue
+                            if (survey.Any())
+                            {
+                                ratingAverage += survey.First().Rate;
+                            }                            
+                        }
+                        ratingAverage /= sales.Count();
+
+                    }
+                }                                
             }
 
             // Populate model
